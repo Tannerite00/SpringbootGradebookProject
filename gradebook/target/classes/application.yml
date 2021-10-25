@@ -1,0 +1,10 @@
+spring:
+  datasource:    password: teacher
+    username: teacher
+    url: jdbc:mysql://localhost:3306/school-gradebook
+    
+
+logging:
+  level:
+    root: warn
+    '[com.promineotech]': debug
