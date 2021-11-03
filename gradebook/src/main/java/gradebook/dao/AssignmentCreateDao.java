@@ -52,46 +52,7 @@ public class AssignmentCreateDao implements AssignmentCreateDaoInterface {
 	}
 
 	
-	@Override
-	public Assignment deleteAssignment(Long studentId, String className, String assignmentName, Long pointsPossible, Long pointsEarned) {
-		
-		SqlParams params = generateDeleteSql(studentId, className, assignmentName, pointsPossible, pointsEarned);
-		
-		KeyHolder keyHolder = new GeneratedKeyHolder();
-		jdbcTemplate.update(params.sql, params.source, keyHolder);
-		
-		
-				//@formatter: off
-				return Assignment.builder()
-						.studentId(studentId)
-						.className(className)
-						.assignmentName(assignmentName)
-						.pointsEarned(pointsEarned)
-						.pointsPossible(pointsPossible)
-						.build();
-				//@formatter: on
-			};
 	
-
-
-	private SqlParams generateDeleteSql(Long studentId, String className,
-			String assignmentName, Long pointsPossible, Long pointsEarned) {
-		 SqlParams params = new SqlParams();
-		    
-		    // @formatter:off
-		    params.sql = "delete from assignments where assignment_name = :assignment_name";
-			//@formatter: on
-		    
-		    params.source.addValue("student_id", studentId.toString());
-			params.source.addValue("class_name", className);
-			params.source.addValue("assignment_name", assignmentName);
-			params.source.addValue("points_possible", pointsPossible);
-			params.source.addValue("points_earned", pointsEarned);
-		    
-		return params;
-	}
-
-
 
 	
 
