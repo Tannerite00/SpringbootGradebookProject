@@ -7,7 +7,7 @@ import lombok.Data;
 public class Classes {
 
 	private Long classId;
-	private ClassType className;
+	private String className;
 	private Long studentId;
 	private Long teacherId;
 }

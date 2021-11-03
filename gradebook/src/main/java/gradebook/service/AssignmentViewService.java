@@ -32,8 +32,7 @@ public class AssignmentViewService implements AssignmentViewServiceInterface {
 			throw new NoSuchElementException(msg);
 		}
 		
-		//Sort being weird
-		//Collections.sort(students);
+		
 		return students;
 	}
 	

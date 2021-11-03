@@ -9,7 +9,7 @@ public class Assignment {
 	private Long assignmentId;
 	private Long studentId;
 	private String assignmentName;
-	private ClassType className;
+	private String className;
 	private Long pointsPossible;
 	private Long pointsEarned;
 }

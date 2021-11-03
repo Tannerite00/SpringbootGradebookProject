@@ -1,14 +1,11 @@
 package gradebook.controller;
 
 import gradebook.entity.Assignment;
-import gradebook.entity.AssignmentRequest;
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
@@ -54,21 +51,52 @@ public interface AssignmentCreateControllerInterface {
 							description = "An unplanned error occurred.", 
 							content = @Content(mediaType = "application/json"))	
 				},
-				parameters = {
-					@Parameter(
-							name = "assignmentRequest", 
-							allowEmptyValue = false, 
-							required = false, 
-							description = "The assignment as JSON"),
-					
-					
-				}
+						 parameters = {
+						          @Parameter(
+						              name = "studentId",
+						              allowEmptyValue = false,
+						              required = false,
+						              description = "The student ID"),
+						          
+						          @Parameter(
+						              name = "assignmentName",
+						              allowEmptyValue = false,
+						              required = false,
+						              description = "The assignment name"),
+						          
+						          @Parameter(
+						              name = "className",
+						              allowEmptyValue = false,
+						              required = false,
+						              description = "The class name"),
+						          
+						          @Parameter(
+						              name = "pointsPossible",
+						              allowEmptyValue = false,
+						              required = false,
+						              description = "The maximum points possible"),
+						          @Parameter(
+						              name = "pointsEarned",
+						              allowEmptyValue = false,
+						              required = false,
+						              description = "The points earned by the student")
+						      }
 			)
-			// @formatter:on
+		
 			@PostMapping
-			@ResponseStatus(code = HttpStatus.OK)
-			Assignment createAssignment(@Valid @RequestBody AssignmentRequest assginmentRequest);
+			  @ResponseStatus(code = HttpStatus.CREATED)
+			  Assignment createAssignment(
+			      @RequestParam(required = false)
+			          String studentId,
+			      @RequestParam(required = false)
+			          String assignmentName,
+			      @RequestParam(required = false)
+			          String className,
+			      @RequestParam(required = false)
+			          String pointsPossible,
+			      @RequestParam(required = false)
+			          String pointsEarned);
 
-			
+			// @formatter:on
 
 }

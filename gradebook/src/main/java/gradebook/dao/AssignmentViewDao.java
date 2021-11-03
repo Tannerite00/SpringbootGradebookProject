@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import gradebook.entity.Assignment;
-import gradebook.entity.ClassType;
 import lombok.extern.slf4j.Slf4j;
 
 @Component 
@@ -44,7 +43,7 @@ public class AssignmentViewDao implements AssignmentViewDaoInterface {
 								.assignmentId(rs.getLong("assignment_id"))
 								.studentId(rs.getLong("student_id"))
 								.assignmentName(rs.getString("assignment_name"))
-								.className(ClassType.valueOf(rs.getString("class_name")))
+								.className(rs.getString("class_name"))
 								.pointsEarned(rs.getLong("points_earned"))
 								.pointsPossible(rs.getLong("points_possible"))
 								.build();
