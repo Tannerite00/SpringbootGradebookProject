@@ -36,12 +36,13 @@ public class AssignmentUpdateDao implements AssignmentUpdateDaoInterface{
 		  
 		    // @formatter:off
 		    params.sql = ""
-		      + "UPDATE assignments where "
+		      + "UPDATE assignments set "
 		      + "student_id = :student_id, "
 		      + "assignment_name = :assignment_name, "
 		      + "class_name = :class_name, "
-		      + "points_possible = :points_possible "
-		      + "points_earned = :points_earned ";
+		      + "points_possible = :points_possible, "
+		      + "points_earned = :points_earned "
+		      + "where assignment_name = :assignment_name and student_id = :student_id and class_name = :class_name";
 		    // @formatter:on
 		  
 		    params.source.addValue("student_id", studentId);
